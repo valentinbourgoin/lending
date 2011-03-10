@@ -11,5 +11,3 @@ connect(
     username=settings.DB_LOGIN,
     password=settings.DB_PASS
 )
-
-#connect('lending', host='flame.mongohq.com', port=27021, username='valentin_lending', password='mongolending')
