@@ -1,0 +1,21 @@
+html, body, div, p, ul, li, img, span, a, h1, h2, h3, h4, h5, acronym { margin:0; padding:0; }
+html { font-family:'Lucida Grande',Arial,San-serif; font-size:0.8em; line-height:16px; }
+a { color:blue; text-decoration:underline; }
+a:hover { text-decoration:none; }
+a img { border:none; }
+header, footer, section, article { display:block; }
+
+/* Layout */
+body { width:100%; background-color:#efefef; }
+#wrapper { width:100%; }
+.wrapper { width:1000px; margin:0 auto; }
+.col { float:left; }
+.shadow { -webkit-box-shadow: 2px 2px 5px rgba(33,33,33,.4); box-shadow:2px 2px 5px rgba(33,33,33,.4); -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, .5); }
+.clear { clear:both;}
+.hidden { display:none; }
+
+/* Tmp */
+body { padding:10px; }
+h1 { margin:10px 0 15px 0; }
+ul { padding:15px; }
+ul li { margin:10px 5px; }

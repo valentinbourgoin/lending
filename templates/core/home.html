@@ -1,9 +1,17 @@
-<h1>Hello !</h1>
+{% extends "layout/base.html" %}
+{% load i18n %}
+
+{% block content %}
+<h1>{% trans "Bonjour" %} {% if user.is_authenticated %}{{ user }}{% endif %} !</h1>
+{% if user.is_authenticated %}
+<a href="/logout/">{% trans "D&eacute;connexion" %}</a>
+{% else %}
 <form method="post" action="/login/">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" name="submit" value="Connexion" />
 </form>
+{% endif %}
 <ul>
 {% for b in books %}
 <li>
@@ -13,3 +21,4 @@
 </li>
 {% endfor %}
 </ul>
+{% endblock content %}

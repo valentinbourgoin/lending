@@ -3,26 +3,27 @@
 import os.path
 from django.utils.translation import gettext_lazy as _
 
+# Debug
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
 ADMINS = (
     ('Valentin', 'valentin.bourgoin@gmail.com'),
 )
-
 MANAGERS = ADMINS
 
+# Bases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'lending',
+        'USER': 'root',
+        'PASSWORD': '',            
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
+# Langues
 TIME_ZONE = 'Europe/Paris'
 LANGUAGE_CODE = 'fr'
 SITE_ID = 1
@@ -33,6 +34,7 @@ LANGUAGES = (
 )
 DEFAULT_LANGUAGE = 1
 
+# Paths
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
 MEDIA_URL = '/media/'
@@ -40,18 +42,7 @@ ADMIN_MEDIA_PREFIX = '/media/admin/'
 
 SECRET_KEY = 'bw2f9_+ljl85rth@&tl%n-w1v%5&s9$1^l9*4k&)bqc=nfpxg!'
 
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.core.context_processors.media",
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.request",
-    "django.core.context_processors.i18n",
-)
-
+# Middlewares
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -60,12 +51,25 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
+# URLs
 ROOT_URLCONF = 'lending.urls'
 
+# Templates
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates'),
 )
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+)
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.media",
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.request",
+    "django.core.context_processors.i18n",
+)
 
+# Apps
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,12 +82,13 @@ INSTALLED_APPS = (
     'lending.apps.books',
 )
 
+# Auth
 AUTHENTICATION_BACKENDS = (
-    'mongoengine.django.auth.MongoEngineBackend',
-    #'lending.apps.core.auth_backend.CustomUserModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    #'mongoengine.django.auth.MongoEngineBackend',
+    'lending.apps.core.auth_backend.CoreUserModelBackend',
 )
-CUSTOM_USER_MODEL = 'lending.apps.core.CoreUser'
-
+LOGIN_REDIRECT_URL = '/'
 SESSION_ENGINE = 'mongoengine.django.sessions'
 
 # MongoDB

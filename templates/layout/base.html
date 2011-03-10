@@ -1,0 +1,18 @@
+{% load i18n %}
+<!DOCTYPE html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+	<meta name="Description" content="{% block description %}{% endblock description %}" />
+	<meta property="og:site_name" content="" />
+	{% block meta %}{% endblock meta %}
+	<title>{% block title %}{% endblock title %}</title>
+	<link rel="shortcut icon" href="{{ MEDIA_URL }}images/favicon.ico" />
+	<link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}css/screen.css" />
+	<!--[if IE]><script type="text/javascript" src="{{ MEDIA_URL }}js/modernizr-1.6.min.js"></script><![endif]--> 
+    </head>
+    <body>
+	<div id="wrapper">
+            {% block content %}{% endblock content %}
+        </div>
+    </body>
+</html>
