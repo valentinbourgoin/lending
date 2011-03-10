@@ -1,0 +1,15 @@
+<h1>Hello !</h1>
+<form method="post" action="/login/">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" name="submit" value="Connexion" />
+</form>
+<ul>
+{% for b in books %}
+<li>
+    <img src="{{ b.cover }}" alt="" /><br />
+    {{ b.author }} : {{ b }} <br />
+    {% for c in b.categories %}{{ c.family }} - {{ c.name }} {% endfor %}
+</li>
+{% endfor %}
+</ul>
